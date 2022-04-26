@@ -10,8 +10,10 @@ jobs:
   pruebas-unitarias:
     runs-on: self-hosted
     steps:
-      - name: build
-        run: echo "pruebas-unitarias"
+      - name: Checkout repository
+        uses: actions/checkout@v2.3.3
+      - name: unit tests
+        run:  mvn test
 
   empaquetar:
     runs-on: self-hosted
