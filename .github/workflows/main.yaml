@@ -17,9 +17,15 @@ jobs:
 
   empaquetar:
     runs-on: self-hosted
+    needs: pruebas-unitarias
     steps:
       - name: build
-        run: echo "empaquetar"
+        run: mvn package -DskipTests=true
+      - name: upload-artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: baloncesto
+          path: target/
 
   pruebas-funcionales:
     runs-on: self-hosted
