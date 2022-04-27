@@ -8,7 +8,7 @@ CREATE TABLE `Jugadores` (
 	`votos` INT NOT NULL DEFAULT 0,
 	PRIMARY KEY (`id`),
 	UNIQUE INDEX `UNIQUE_KEY` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 INSERT INTO Jugadores (id, nombre, votos) VALUES (1, 'Carroll', 0);
