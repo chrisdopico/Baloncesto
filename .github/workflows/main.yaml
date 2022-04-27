@@ -47,11 +47,13 @@ jobs:
   calidad-codigo:
     runs-on: self-hosted
     needs: empaquetar
+    continue-on-error: true
     steps:
       - name: qa
         run: |
           mvn sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.qualitygate.wait=true 
-          Dsonar.login=admin -Dsonar.password=admin allow_failure: true
+          Dsonar.login=admin -Dsonar.password=admin1
+        
 
 
   despliegue-host-heroku:
