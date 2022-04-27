@@ -57,7 +57,7 @@ jobs:
 
   despliegue-heroku:
     runs-on: self-hosted
-    needs: empaquetar
+    needs: pruebas-funcionales
     steps:
       - name: deploy
         run: |
