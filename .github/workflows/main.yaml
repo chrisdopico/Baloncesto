@@ -17,6 +17,7 @@ jobs:
 
   empaquetar:
     runs-on: self-hosted
+    needs: pruebas-unitarias
     steps:
       - name: build
         run: mvn package -DskipTests=true
