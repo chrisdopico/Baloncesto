@@ -55,9 +55,12 @@ jobs:
         
 
 
-  despliegue-host-heroku:
+  despliegue-heroku:
     runs-on: self-hosted
+    needs: empaquetar
     steps:
       - name: deploy
-        run: echo "despliegue-host-heroku"
+        run: |
+          export HEROKU_API_KEY=${{secrets.HEROKU_API_KEY}}
+          mvn heroku:deploy-war -Dheroku.appName=baloncestogithub -DskipTests=true
 
