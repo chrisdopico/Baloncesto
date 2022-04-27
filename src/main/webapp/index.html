@@ -2,63 +2,32 @@
 Document : index.html
 Author : Roberto Barchino (aplicacion original)
 -->
-<!DOCTYPE> 
-<html lang="es">
+<html>
     <head>
         <title>Votacion mejor jugador liga ACB</title>
-        <link href="estilos.css" rel="stylesheet" type="text/css"/>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script type="text/javascript" src="js/script.js"></script>
-        </head>
+    </head>
     <body>
-        <div style="text-align: center;">
-            <h1>Votaci&oacute;n al mejor jugador de la liga ACB</h1>
-        </div>
-        <hr>
+    <center><H1>Votaci&oacute;n al mejor jugador de la liga ACB</H1></center><hr>
     <form action="Acb" method="POST">
-        <p style="text-align: left;">
-            Nombre del Visitante: 
-            <input type="text" size="20" name="txtNombre">
-            eMail:
-            <input type="text" size="20" name="txtMail">
-        </p> 
-        REAL MADRID:
-        <br>
+        <p align="left">Nombre del Visitante: <input type="text" size="20"
+                                                     name="txtNombre">
+            eMail: <input type="text" size="20" name="txtMail"></p> REAL MADRID:<br>
 
         <img src="Carroll.jpg" width="100" height="67" alt="equipo1"/>
-        <p style="text-align: left;">
-            <input type="radio" id="radioCarroll" name="R1" value="Carroll">
-            Carroll
-        </p>
+        <p align="left"><input type="radio" name="R1" value="Carroll">Carroll</p>
 
         <img src="Llull.jpg" width="100" height="67" alt="equipo1"/>
-        <p style="text-align: left;">
-            <input type="radio" id="radioLlull" name="R1" value="Llull">
-            Llull
-        </p>
+        <p align="left"><input type="radio" name="R1" value="Llull">Llull</p>
 
         <img src="Rudy.jpg" width="100" height="67" alt="equipo1"/>
-        <p style="text-align: left;">
-            <input type="radio" id="radioRudy" name="R1" value="Rudy">
-            Rudy
-        </p>
+        <p align="left"><input type="radio" name="R1" value="Rudy">Rudy</p>
 
         <br>
-        <p style="text-align: left;">
-            <input type="radio" id="radioOtros" name="R1" value="Otros">
-            Otro
-            <input type="text" id="textOtros" size="20" name="txtOtros">
-        </p>
-        <p style="text-align: left;">
-            <input id="votar" type="submit" name="B1" value="Votar">
-            <input id="reset" type="reset" name="B2" value="Reset">
-            <input id="VoteCero" type="button" name="B3" value="Votos Cero" onclick="VoteZero()">
-            <input id="ListadoJugadores" type="button" name="B4" value="Ver Listado" onclick="verListado()">
-        </p>
-
+        <p align="left"><input type="radio" name="R1" value="Otros">Otro
+            <input type="text" size="20" name="txtOtros"></p>
+        <p align="left">
+            <input type="submit" name="B1" value="Votar">
+            <input type="reset" name="B2" value="Reset"></p>
     </form>
 </body>
 </html>
