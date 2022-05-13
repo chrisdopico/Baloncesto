@@ -138,7 +138,6 @@ public class ModeloDatos {
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
-
         return jugadores;
     }
 

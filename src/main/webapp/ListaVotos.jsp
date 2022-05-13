@@ -2,7 +2,6 @@
 <%@ page import="java.util.Iterator"%>
 <%@ page import="Modelo.ModeloDatos" %>
 <%@ page import="Modelo.Jugador" %>
-<%@ page import="Modelo.Jugador" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE> 
