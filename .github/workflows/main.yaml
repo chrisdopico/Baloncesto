@@ -49,8 +49,18 @@ jobs:
     steps:
       - name: qa
         run: |
-          mvn sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.qualitygate.wait=true -Dsonar.login=admin -Dsonar.password=admin
+          mvn sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.qualitygate.wait=true -Dsonar.login=admin -Dsonar.password=admin1
         
+
+  despliegue-heroku-pre:
+    runs-on: self-hosted
+    needs: pruebas-funcionales
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: deploy
+        run: |
+          export HEROKU_API_KEY=${{secrets.HEROKU_API_KEY}}
+          mvn heroku:deploy-war -Dheroku.appName=baloncestorelease -DskipTests=true
 
   despliegue-heroku:
     runs-on: self-hosted
