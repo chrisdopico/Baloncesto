@@ -23,52 +23,51 @@ jobs:
       - name: build
         run: mvn package -DskipTests=true
 
-
   pruebas-funcionales:
-    runs-on: self-hosted
-    needs: empaquetar
-    steps:
-      - name: test
-        run: |
-          cp -r target/Baloncesto /usr/local/tomcat/webapps
-          mysql -u root < db/baloncesto.sql
-          export DATABASE_HOST="jdbc:mysql://localhost"
-          export DATABASE_PORT="3306"
-          export DATABASE_NAME="baloncesto"
-          export DATABASE_USER="usuario"
-          export DATABASE_PASS="clave"
-          sh /usr/local/tomcat/bin/catalina.sh stop
-          sh /usr/local/tomcat/bin/catalina.sh start
-          mvn failsafe:integration-test failsafe:verify
+     runs-on: self-hosted
+     needs: empaquetar
+     steps:
+       - name: test
+         run: |
+           cp -r target/Baloncesto /usr/local/tomcat/webapps
+           mysql -u root < db/baloncesto.sql
+           export DATABASE_HOST="jdbc:mysql://localhost"
+           export DATABASE_PORT="3306"
+           export DATABASE_NAME="baloncesto"
+           export DATABASE_USER="usuario"
+           export DATABASE_PASS="clave"
+           sh /usr/local/tomcat/bin/catalina.sh stop
+           sh /usr/local/tomcat/bin/catalina.sh start
+           mvn failsafe:integration-test failsafe:verify
   
   
-  calidad-codigo:
-    runs-on: self-hosted
-    needs: empaquetar
-    continue-on-error: true
-    steps:
-      - name: qa
-        run: |
-          mvn sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.qualitygate.wait=true -Dsonar.login=admin -Dsonar.password=admin1
+  # calidad-codigo:
+  #   runs-on: self-hosted
+  #   needs: empaquetar
+  #   continue-on-error: true
+  #   steps:
+  #     - name: qa
+  #       run: |
+  #         mvn sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.qualitygate.wait=true -Dsonar.login=admin -Dsonar.password=admin1
         
 
-  despliegue-heroku-pre:
-    runs-on: self-hosted
-    needs: pruebas-funcionales
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - name: release
-        run: |
-          export HEROKU_API_KEY=${{secrets.HEROKU_API_KEY}}
-          mvn heroku:deploy-war -Dheroku.appName=baloncestorelease -DskipTests=true
+  # despliegue-heroku-pre:
+  #   runs-on: self-hosted
+  #   needs: pruebas-funcionales
+  #   if: github.ref == 'refs/heads/main'
+  #   steps:
+  #     - name: release
+  #       run: |
+  #         export HEROKU_API_KEY=${{secrets.HEROKU_API_KEY}}
+  #         mvn heroku:deploy-war -Dheroku.appName=baloncestorelease -DskipTests=true
 
-  despliegue-heroku:
-    runs-on: self-hosted
-    needs: despliegue-heroku-pre
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - name: deploy
-        run: |
-          export HEROKU_API_KEY=${{secrets.HEROKU_API_KEY}}
-          mvn heroku:deploy-war -Dheroku.appName=baloncestogithub -DskipTests=true
+  # despliegue-heroku:
+  #   runs-on: self-hosted
+  #   needs: despliegue-heroku-pre
+  #   if: github.ref == 'refs/heads/main'
+  #   steps:
+  #     - name: deploy
+  #       run: |
+  #         export HEROKU_API_KEY=${{secrets.HEROKU_API_KEY}}
+  #         mvn heroku:deploy-war -Dheroku.appName=baloncestogithub -DskipTests=true
 

@@ -85,4 +85,17 @@ public class ModeloDatos {
         }
     }
 
+    public boolean votosACero() {
+        boolean indicador = false;
+        try {
+            set = con.createStatement();
+            set.executeUpdate("UPDATE Jugadores SET votos = 0;");
+            indicador = true;
+            set.close();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return indicador;
+    }
+
 }
