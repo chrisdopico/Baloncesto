@@ -124,6 +124,7 @@ public class ModeloDatos {
     public ArrayList<Jugador> getJugadores() {
         ArrayList<Jugador> jugadores = new ArrayList<>();
         try {
+            abrirConexion();
             set = con.createStatement();
             rs = set.executeQuery("SELECT * FROM Jugadores;");
             while (rs.next()) {
