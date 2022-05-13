@@ -43,7 +43,7 @@ public class Acb extends HttpServlet {
                 }
 
                 // Llamada a la página jsp que nos avisa que se han puesto los votos a cero
-                res.sendRedirect(res.encodeRedirectURL("TablaVotos.jsp"));
+                res.sendRedirect(res.encodeRedirectURL("VotosCero.jsp"));
 
             } catch (NumberFormatException e) {
                 out.println("Number Format Exception" + e);
