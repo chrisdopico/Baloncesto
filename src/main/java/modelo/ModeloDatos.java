@@ -1,4 +1,7 @@
+package modelo;
+
 import java.sql.*;
+import java.util.ArrayList;
 
 public class ModeloDatos {
 
@@ -96,6 +99,28 @@ public class ModeloDatos {
             System.out.println("Error: " + e.getMessage());
         }
         return indicador;
+    }
+
+
+    public ArrayList<Jugador> getJugadores() {
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+        try {
+            abrirConexion();
+            set = con.createStatement();
+            rs = set.executeQuery("SELECT * FROM Jugadores;");
+            while (rs.next()) {
+                Jugador player = new Jugador();
+                player.setId(rs.getInt("id"));
+                player.setNombre(rs.getString("nombre"));
+                player.setTotalVotos(rs.getInt("votos"));
+                jugadores.add(player);
+            }
+            rs.close();
+            set.close();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return jugadores;
     }
 
 }
