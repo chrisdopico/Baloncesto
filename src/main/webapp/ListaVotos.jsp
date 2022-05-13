@@ -1,7 +1,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Iterator"%>
-<%@ page import="Jugador"%>
-<%@ page import="ModeloDatos"%>
+<%@ page import="java.Jugador"%>
+<%@ page import="java.ModeloDatos"%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE> 
