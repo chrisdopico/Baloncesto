@@ -1,33 +1,24 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Iterator"%>
-<%@ page import="Modelo.ModeloDatos" %>
-<%@ page import="Modelo.Jugador" %>
+<%@ page import="modelo.ModeloDatos" %>
+<%@ page import="modelo.Jugador" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE> 
 <html lang="es">
     <head><title>Ver votos</title></head>
     <link href="estilos.css" rel="stylesheet" type="text/css" />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous"
-    />
 
     <body class="listado">
         <h1>Tabla de Votos</h1>
         <hr>
-        <div class="container">
+        <div>
             <%
                 ModeloDatos bd = new ModeloDatos();
                 ArrayList<Jugador> jugadores = bd.getJugadores();
                 Iterator<Jugador> listado = jugadores.iterator();
             %>
-            <table class="table">
+            <table>
                 <thead>
                     <th scope="col">Id</th>
                     <th scope="col">Nombre</th>
@@ -53,6 +44,6 @@
                 </tbody>
             </table>
         </div>
-        <br> <a href="index.html" class="btn btn-primary">Volver</a>
+        <br> <a href="index.html"> Ir al comienzo</a>
     </body>
 </html>

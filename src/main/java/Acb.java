@@ -2,7 +2,7 @@
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import Modelo.*;
+import modelo.*;
 
 public class Acb extends HttpServlet {
 
