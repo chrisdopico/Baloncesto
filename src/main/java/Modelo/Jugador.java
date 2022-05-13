@@ -1,3 +1,5 @@
+package Modelo;
+
 public class Jugador {
     private int jugadorId;
     private String nombre;
