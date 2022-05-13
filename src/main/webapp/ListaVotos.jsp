@@ -23,9 +23,8 @@
         <hr>
         <div class="container">
             <%
-                private ModeloDatos bd;
-                bd = new ModeloDatos();
-                ArrayList<Jugador> jugadores = db.getJugadores();
+                ModeloDatos bd = new ModeloDatos();
+                ArrayList<Jugador> jugadores = bd.getJugadores();
                 Iterator<Jugador> listado = jugadores.iterator();
             %>
             <table class="table">
