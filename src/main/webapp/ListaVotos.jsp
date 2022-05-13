@@ -4,8 +4,7 @@
 <%@ page import="modelo.Jugador" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 
-<!DOCTYPE> 
-<html lang="es">
+<html>
     <head><title>Ver votos</title></head>
     <link href="estilos.css" rel="stylesheet" type="text/css" />
 
@@ -34,9 +33,15 @@
                         
                     %>
                     <tr>
-                        <td id="contador<%=contador%>"><%=contador%></td>                    
-                        <td id="jugador<%=contador%>"><%=jugador.getNombre()%></td>
-                        <td id="votes<%=contador%>"><%=jugador.getTotalVotos()%></td>
+                        <td id="contador<%=contador%>">
+                            <%=contador%>
+                        </td>                    
+                        <td id="jugador<%=contador%>">
+                            <%=jugador.getNombre()%>
+                        </td>
+                        <td id="votes<%=contador%>">
+                            <%=jugador.getTotalVotos()%>
+                        </td>
                     </tr>
                     <%
                         }
