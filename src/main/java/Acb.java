@@ -32,7 +32,7 @@ public class Acb extends HttpServlet {
             // Llamada a la página jsp que nos da las gracias
             res.sendRedirect(res.encodeRedirectURL("TablaVotos.jsp"));
         }
-        // Cuando se pulse el votón Reset
+        // Cuando se pulse el botón Reset
         else if (req.getParameter("B2") != null) {
             try {
                 boolean indicador = bd.votosACero();
@@ -44,6 +44,27 @@ public class Acb extends HttpServlet {
 
                 // Llamada a la página jsp que nos avisa que se han puesto los votos a cero
                 res.sendRedirect(res.encodeRedirectURL("VotosCero.jsp"));
+
+            } catch (NumberFormatException e) {
+                out.println("Number Format Exception" + e);
+            } catch (IndexOutOfBoundsException e) {
+                out.println("Index out of bounds Exception" + e);
+            } finally {
+                out.close();
+            }
+        }
+        // Cuando se pulse el botón Ver Tabla
+        else if (req.getParameter("B3") != null) {
+            try {
+                boolean indicador = bd.votosACero();
+                if (indicador) {
+                    out.print("Votos a Cero");
+                } else {
+                    out.print("Error");
+                }
+
+                // Llamada a la página jsp que nos avisa que se han puesto los votos a cero
+                res.sendRedirect(res.encodeRedirectURL("ListaVotos.jsp"));
 
             } catch (NumberFormatException e) {
                 out.println("Number Format Exception" + e);

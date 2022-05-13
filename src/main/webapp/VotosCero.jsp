@@ -7,7 +7,7 @@
         <font size=10>
         Votaci&oacute;n al mejor jugador de la liga ACB
         <hr>
-        <br>Todos los votos se han puesto a cero
+        <br>Todos los votos se han puesto en cero
         </font>
         <br>
         <br> <a href="index.html"> Ir al comienzo</a>

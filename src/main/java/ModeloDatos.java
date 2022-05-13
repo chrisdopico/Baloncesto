@@ -98,4 +98,45 @@ public class ModeloDatos {
         return indicador;
     }
 
+    public Jugador getJugador(String nombreJugador) {
+        Jugador jugador = new Jugador();
+        try {
+            abrirConexion();
+            set = con.createStatement();
+            rs = set.executeQuery("SELECT * FROM Jugadores WHERE nombre='" + nombreJugador + "';");
+            while (rs.next()) {
+                jugador.setId(rs.getInt("id"));
+                jugador.setNombre(rs.getString("nombre"));
+                jugador.setTotalVotos(rs.getInt("votos"));
+            }
+            rs.close();
+            set.close();
+        } catch (Exception e) {
+            System.out.println("Error " + e.getMessage());
+        }
+
+        return jugador;
+    }
+
+    public ArrayList<Jugador> getJugadores() {
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+        try {
+            set = con.createStatement();
+            rs = set.executeQuery("SELECT * FROM Jugadores;");
+            while (rs.next()) {
+                Jugador player = new Jugador();
+                player.setId(rs.getInt("id"));
+                player.setNombre(rs.getString("nombre"));
+                player.setTotalVotos(rs.getInt("votos"));
+                jugadores.add(player);
+            }
+            rs.close();
+            set.close();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        return jugadores;
+    }
+
 }
