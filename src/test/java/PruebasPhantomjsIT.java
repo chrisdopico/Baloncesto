@@ -63,12 +63,12 @@ class PruebasPhantomjsIT {
         }
 
         boolean expectedResult = true;
-        boolean verify = true;
+        boolean verify = false;
         int counter = 0;
         // Se comprueba que el valor de los votos de cada jugador están a cero
         while (verify && counter < listWebElementsVotes.size()) {
-            if (!listWebElementsVotes.get(counter).getText().trim().equals("0")) {
-                verify = false;
+            if (listWebElementsVotes.get(counter).getText().trim().equals("0")) {
+                verify = true;
             }
             counter++;
         }
