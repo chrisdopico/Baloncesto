@@ -43,6 +43,8 @@ class PruebasPhantomjsIT {
 
         // Se realiza la limpieza de votos
         driver.findElement(By.name("B2")).click();
+        // Regresa a página principal
+        driver.findElement(By.tagName("a")).click();
         // Se abre la página para visualizar los votos
         driver.findElement(By.name("B3")).click();
 
