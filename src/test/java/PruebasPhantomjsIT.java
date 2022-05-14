@@ -100,7 +100,6 @@ class PruebasPhantomjsIT {
 
         // Se abre la página para visualizar los votos
         driver.findElement(By.name("B3")).click();
-        driver.findElement(By.tagName("a")).click();
 
         boolean expectedResult = true;
         // Se obtiene la lista de los valores de las votaciones de cada uno de los
