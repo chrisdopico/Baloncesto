@@ -89,7 +89,7 @@ class PruebasPhantomjsIT {
         driver.navigate().to("http://localhost:8080/Baloncesto/");
 
         // Se marca el radio button para votar por otro jugador
-        driver.findElement(By.name("R1")).click();
+        driver.findElement(By.id("textoOtros")).click();
         // Se introduce en su campo de texto el nombre de un jugador
         String namePlayer = "Brandon Davies";
         driver.findElement(By.name("txtOtros")).sendKeys(namePlayer);
