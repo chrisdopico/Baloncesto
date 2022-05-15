@@ -14,6 +14,7 @@ class PruebasPhantomjsIT {
 
     @Test
     void tituloIndexTest() {
+        System.out.println("Primer test");
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setJavascriptEnabled(true);
         caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "/usr/bin/phantomjs");
@@ -31,6 +32,7 @@ class PruebasPhantomjsIT {
 
     @Test
     void setVotosToCeroTest() {
+        System.out.println("Segundo test");
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setJavascriptEnabled(true);
         caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "/usr/bin/phantomjs");
@@ -66,6 +68,7 @@ class PruebasPhantomjsIT {
 
     @Test
     void setVoteOtherPlayerTest() {
+        System.out.println("Tercer test");
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setJavascriptEnabled(true);
         caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "/usr/bin/phantomjs");
