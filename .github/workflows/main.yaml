@@ -13,7 +13,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2.3.3
       - name: unit tests
-        run:  mvn test
+        run:  |
+          mvn test
+          mysql -u root < db/baloncesto.sql
+          export DATABASE_HOST="jdbc:mysql://localhost"
+          export DATABASE_PORT="3306"
+          export DATABASE_NAME="baloncesto"
+          export DATABASE_USER="usuario"
+          export DATABASE_PASS="clave"
 
 
   empaquetar:
@@ -30,12 +37,6 @@ jobs:
        - name: test
          run: |
            cp -r target/Baloncesto /usr/local/tomcat/webapps
-           mysql -u root < db/baloncesto.sql
-           export DATABASE_HOST="jdbc:mysql://localhost"
-           export DATABASE_PORT="3306"
-           export DATABASE_NAME="baloncesto"
-           export DATABASE_USER="usuario"
-           export DATABASE_PASS="clave"
            sh /usr/local/tomcat/bin/catalina.sh stop
            sh /usr/local/tomcat/bin/catalina.sh start
            mvn failsafe:integration-test failsafe:verify

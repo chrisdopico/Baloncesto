@@ -123,4 +123,24 @@ public class ModeloDatos {
         return jugadores;
     }
 
+    public Jugador getJugador(String nombreJugador) {
+        Jugador jugador = new Jugador();
+        try {
+            abrirConexion();
+            set = con.createStatement();
+            rs = set.executeQuery("SELECT * FROM Jugadores WHERE nombre='" + nombreJugador + "';");
+            while (rs.next()) {
+                jugador.setId(rs.getInt("id"));
+                jugador.setNombre(rs.getString("nombre"));
+                jugador.setTotalVotos(rs.getInt("votos"));
+            }
+            rs.close();
+            set.close();
+        } catch (Exception e) {
+            System.out.println("Error " + e.getMessage());
+        }
+
+        return jugador;
+    }
+
 }
