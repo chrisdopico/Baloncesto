@@ -2,6 +2,7 @@ package modelo;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ModeloDatos {
 
@@ -26,8 +27,8 @@ public class ModeloDatos {
 
         } catch (Exception e) {
             // No se ha conectado
-            System.out.println("No se ha podido conectar");
-            System.out.println("El error es: " + e.getMessage());
+            System.err.println("No se ha podido conectar");
+            System.err.println("El error es: " + e.getMessage());
         }
     }
 
@@ -48,8 +49,8 @@ public class ModeloDatos {
             set.close();
         } catch (Exception e) {
             // No lee de la tabla
-            System.out.println("No lee de la tabla");
-            System.out.println("El error es: " + e.getMessage());
+            System.err.println("No lee de la tabla");
+            System.err.println("El error es: " + e.getMessage());
         }
         return (existe);
     }
@@ -62,8 +63,8 @@ public class ModeloDatos {
             set.close();
         } catch (Exception e) {
             // No modifica la tabla
-            System.out.println("No modifica la tabla");
-            System.out.println("El error es: " + e.getMessage());
+            System.err.println("No modifica la tabla");
+            System.err.println("El error es: " + e.getMessage());
         }
     }
 
@@ -75,8 +76,8 @@ public class ModeloDatos {
             set.close();
         } catch (Exception e) {
             // No inserta en la tabla
-            System.out.println("No inserta en la tabla");
-            System.out.println("El error es: " + e.getMessage());
+            System.err.println("No inserta en la tabla");
+            System.err.println("El error es: " + e.getMessage());
         }
     }
 
@@ -84,7 +85,7 @@ public class ModeloDatos {
         try {
             con.close();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
         }
     }
 
@@ -96,13 +97,13 @@ public class ModeloDatos {
             indicador = true;
             set.close();
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            System.err.println("Error: " + e.getMessage());
         }
         return indicador;
     }
 
 
-    public ArrayList<Jugador> getJugadores() {
+    public List<Jugador> getJugadores() {
         ArrayList<Jugador> jugadores = new ArrayList<>();
         try {
             abrirConexion();
@@ -118,7 +119,7 @@ public class ModeloDatos {
             rs.close();
             set.close();
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            System.err.println("Error: " + e.getMessage());
         }
         return jugadores;
     }
@@ -137,7 +138,7 @@ public class ModeloDatos {
             rs.close();
             set.close();
         } catch (Exception e) {
-            System.out.println("Error " + e.getMessage());
+            System.err.println("Error " + e.getMessage());
         }
 
         return jugador;
