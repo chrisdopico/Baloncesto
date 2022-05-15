@@ -4,11 +4,15 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import modelo.*;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 public class Acb extends HttpServlet {
 
     private ModeloDatos bd;
 
+    private static final Logger log = LogManager.getLogger(Acb.class);
     @Override
     public void init(ServletConfig cfg) throws ServletException {
         bd = new ModeloDatos();
@@ -49,9 +53,9 @@ public class Acb extends HttpServlet {
                 res.sendRedirect(res.encodeRedirectURL("VotosCero.jsp"));
 
             } catch (NumberFormatException e) {
-                out.println("Number Format Exception" + e);
+                log.info("Number Format Exception" + e);
             } catch (IndexOutOfBoundsException e) {
-                out.println("Index out of bounds Exception" + e);
+                log.info("Index out of bounds Exception" + e);
             } finally {
                 out.close();
             }
@@ -64,7 +68,7 @@ public class Acb extends HttpServlet {
             } catch (NumberFormatException e) {
                 out.println("Number Format Exception" + e);
             } catch (IndexOutOfBoundsException e) {
-                out.println("Index out of bounds Exception" + e);
+                log.info("Index out of bounds Exception" + e);
             } finally {
                 out.close();
             }
