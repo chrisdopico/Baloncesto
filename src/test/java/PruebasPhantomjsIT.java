@@ -14,7 +14,6 @@ class PruebasPhantomjsIT {
 
     @Test
     void tituloIndexTest() {
-        System.out.println("Primera Prueba");
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setJavascriptEnabled(true);
         caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "/usr/bin/phantomjs");
@@ -32,7 +31,6 @@ class PruebasPhantomjsIT {
 
     @Test
     void setVotosToCeroTest() {
-        System.out.println("Segunda Prueba");
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setJavascriptEnabled(true);
         caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "/usr/bin/phantomjs");
@@ -40,32 +38,21 @@ class PruebasPhantomjsIT {
                 new String[] { "--web-security=no", "--ignore-ssl-errors=yes" });
         driver = new PhantomJSDriver(caps);
         driver.navigate().to("http://localhost:8080/Baloncesto/");
-
-        // Se realiza la limpieza de votos
         driver.findElement(By.name("B2")).click();
-        // Regresa a página principal
         driver.findElement(By.tagName("a")).click();
-        // Se abre la página para visualizar los votos
         driver.findElement(By.name("B3")).click();
-
-        // Se obtiene la lista de los valores de las votaciones de cada uno de los
-        // jugadores
-        WebElement tableVotes = driver.findElement(By.tagName("table"));
-        ArrayList<WebElement> rows = new ArrayList<>(tableVotes.findElements(By.tagName("tr")));
-        // Se elimina la cabecera de las columnas de la tabla
+        WebElement tablaVotos = driver.findElement(By.tagName("table"));
+        ArrayList<WebElement> rows = new ArrayList<>(tablaVotos.findElements(By.tagName("tr")));
         rows.remove(0);
         ArrayList<WebElement> listWebElementsVotes = new ArrayList<>();
-        // Se obtiene la lista de votos de cada jugador de cada fila
         for (int i = 0; i < rows.size(); i++) {
             List<WebElement> cells = rows.get(i).findElements(By.tagName("td"));
-            // Se coge solo el campo de los votos de la fila
             listWebElementsVotes.add(cells.get(2));
         }
 
         boolean expectedResult = true;
         boolean verify = true;
         int counter = 0;
-        // Se comprueba que el valor de los votos de cada jugador están a cero
         while (verify && counter < listWebElementsVotes.size()) {
             if (!listWebElementsVotes.get(counter).getText().trim().equals("0")) {
                 verify = false;
@@ -73,13 +60,12 @@ class PruebasPhantomjsIT {
             counter++;
         }
 
-        assertEquals(expectedResult, verify, "No se ha realizado la puesta a 0 de los votos.");
+        assertEquals(expectedResult, verify);
 
     }
 
     @Test
     void setVoteOtherPlayerTest() {
-        System.out.println("Tercera Prueba");
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setJavascriptEnabled(true);
         caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "/usr/bin/phantomjs");
@@ -88,43 +74,29 @@ class PruebasPhantomjsIT {
         driver = new PhantomJSDriver(caps);
         driver.navigate().to("http://localhost:8080/Baloncesto/");
 
-        // Se marca el radio button para votar por otro jugador
         driver.findElement(By.id("textoOtros")).click();
-        // Se introduce en su campo de texto el nombre de un jugador
         String namePlayer = "Brandon Davies";
         driver.findElement(By.name("txtOtros")).sendKeys(namePlayer);
-        // Se realiza el envío del voto realizado
         driver.findElement(By.name("B1")).click();
-        // Se vuelve a la página principal
         driver.findElement(By.tagName("a")).click();
-
-        // Se abre la página para visualizar los votos
         driver.findElement(By.name("B3")).click();
 
         boolean expectedResult = true;
-        // Se obtiene la lista de los valores de las votaciones de cada uno de los
-        // jugadores
-        WebElement tableVotes = driver.findElement(By.tagName("table"));
-        ArrayList<WebElement> rows = new ArrayList<>(tableVotes.findElements(By.tagName("tr")));
-        // Se elimina la cabecera de las columnas de la tabla
+        WebElement tablaVotos = driver.findElement(By.tagName("table"));
+        ArrayList<WebElement> rows = new ArrayList<>(tablaVotos.findElements(By.tagName("tr")));
         rows.remove(0);
 
         int counter = 0;
         boolean verify = false;
-        // Comprueba entre los distintos jugadores con votos al jugador al que se le ha
-        // dado un voto y se comprueba que ha recibido dicho voto
         while (!verify && counter < rows.size()) {
             List<WebElement> cells = rows.get(counter).findElements(By.tagName("td"));
-            // Comprueba que sea el jugador introducido para la votación y mira que tiene un
-            // voto
             if (cells.get(1).getText().trim().equals(namePlayer) && cells.get(2).getText().trim().equals("1")) {
                 verify = true;
             }
             counter++;
         }
 
-        assertEquals(expectedResult, verify,
-                "El jugador no ha recibido el voto.");
+        assertEquals(expectedResult, verify);
     }
 
 }
