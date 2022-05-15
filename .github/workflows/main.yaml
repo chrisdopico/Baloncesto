@@ -60,10 +60,10 @@ jobs:
 
   despliegue-heroku-pre:
     runs-on: self-hosted
-    needs: pruebas-funcionales
+    needs: calidad-codigo
     if: github.ref == 'refs/heads/main'
     steps:
-      - name: calidad-codigo
+      - name: release
         run: |
           export HEROKU_API_KEY=${{secrets.HEROKU_API_KEY}}
           mvn heroku:deploy-war -Dheroku.appName=baloncestorelease -DskipTests=true
