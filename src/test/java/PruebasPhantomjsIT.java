@@ -41,7 +41,7 @@ class PruebasPhantomjsIT {
         driver = new PhantomJSDriver(caps);
         driver.navigate().to("http://localhost:8080/Baloncesto/");
         driver.findElement(By.name("B2")).click();
-        driver.findElement(By.tagName("a")).click();
+        // driver.findElement(By.tagName("a")).click();
         driver.findElement(By.name("B3")).click();
         WebElement tablaVotos = driver.findElement(By.tagName("table"));
         ArrayList<WebElement> rows = new ArrayList<>(tablaVotos.findElements(By.tagName("tr")));
