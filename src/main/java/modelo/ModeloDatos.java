@@ -3,13 +3,13 @@ package modelo;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-//import org.apache.log4j.BasicConfigurator;
-//import org.apache.log4j.LogManager;
-//import org.apache.log4j.Logger;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 public class ModeloDatos {
 
-    //private static final Logger log = LogManager.getLogger(ModeloDatos.class);
+    private static final Logger log = LogManager.getLogger(ModeloDatos.class);
 
     private Connection con;
     private Statement set;
@@ -32,8 +32,8 @@ public class ModeloDatos {
 
         } catch (Exception e) {
             // No se ha conectado
-            //log.info("No se ha podido conectar");
-            //log.info("El error es: " + e.getMessage());
+            log.info("No se ha podido conectar");
+            log.info("El error es: " + e.getMessage());
         }
     }
 
@@ -54,8 +54,8 @@ public class ModeloDatos {
             set.close();
         } catch (Exception e) {
             // No lee de la tabla
-            //log.info("No lee de la tabla");
-            //log.info("El error es: " + e.getMessage());
+            log.info("No lee de la tabla");
+            log.info("El error es: " + e.getMessage());
         }
         return (existe);
     }
@@ -68,8 +68,8 @@ public class ModeloDatos {
             set.close();
         } catch (Exception e) {
             // No modifica la tabla
-            //log.info("No modifica la tabla");
-            //log.info("El error es: " + e.getMessage());
+            log.info("No modifica la tabla");
+            log.info("El error es: " + e.getMessage());
         }
     }
 
@@ -81,8 +81,8 @@ public class ModeloDatos {
             set.close();
         } catch (Exception e) {
             // No inserta en la tabla
-            //log.info("No inserta en la tabla");
-            //log.info("El error es: " + e.getMessage());
+            log.info("No inserta en la tabla");
+            log.info("El error es: " + e.getMessage());
         }
     }
 
@@ -90,7 +90,7 @@ public class ModeloDatos {
         try {
             con.close();
         } catch (Exception e) {
-            //log.info(e.getMessage());
+            log.info(e.getMessage());
         }
     }
 
@@ -102,7 +102,7 @@ public class ModeloDatos {
             indicador = true;
             set.close();
         } catch (Exception e) {
-            //log.info("Error: " + e.getMessage());
+            log.info("Error: " + e.getMessage());
         }
         return indicador;
     }
@@ -124,7 +124,7 @@ public class ModeloDatos {
             rs.close();
             set.close();
         } catch (Exception e) {
-            //log.info("Error: " + e.getMessage());
+            log.info("Error: " + e.getMessage());
         }
         return jugadores;
     }
@@ -143,7 +143,7 @@ public class ModeloDatos {
             rs.close();
             set.close();
         } catch (Exception e) {
-            //log.info("Error " + e.getMessage());
+            log.info("Error " + e.getMessage());
         }
 
         return jugador;
