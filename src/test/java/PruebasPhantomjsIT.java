@@ -81,7 +81,7 @@ class PruebasPhantomjsIT {
         String namePlayer = "Brandon Davies";
         driver.findElement(By.name("txtOtros")).sendKeys(namePlayer);
         driver.findElement(By.name("B1")).click();
-        driver.findElement(By.tagName("a")).click();
+        // driver.findElement(By.tagName("a")).click();
         driver.findElement(By.name("B3")).click();
 
         boolean expectedResult = true;
