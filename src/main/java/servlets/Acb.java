@@ -75,11 +75,7 @@ public class Acb extends HttpServlet {
             } finally {
                 out.close();
             }
-        } else {
-            // Llamada a la página jsp que nos da las gracias
-            res.sendRedirect(res.encodeRedirectURL("TablaVotos.jsp"));
         }
-
     }
 
     @Override
