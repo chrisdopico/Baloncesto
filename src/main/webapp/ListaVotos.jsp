@@ -2,6 +2,7 @@
 <%@ page import="java.util.Iterator"%>
 <%@ page import="modelo.ModeloDatos" %>
 <%@ page import="modelo.Jugador" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -19,7 +20,7 @@
         <div>
             <%
                 ModeloDatos bd = new ModeloDatos();
-                ArrayList<Jugador> jugadores = bd.getJugadores();
+                List<Jugador> jugadores = bd.getJugadores();
                 Iterator<Jugador> listado = jugadores.iterator();
             %>
             <table>
