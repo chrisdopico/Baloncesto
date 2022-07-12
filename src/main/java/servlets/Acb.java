@@ -13,6 +13,7 @@ public class Acb extends HttpServlet {
     private ModeloDatos bd;
 
     private static final Logger log = LogManager.getLogger(Acb.class);
+
     @Override
     public void init(ServletConfig cfg) throws ServletException {
         bd = new ModeloDatos();
@@ -22,7 +23,7 @@ public class Acb extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         HttpSession s = req.getSession(true);
         String nombreP = req.getParameter("txtNombre");
-        String nombre =  req.getParameter("R1");
+        String nombre = req.getParameter("R1");
         PrintWriter out = res.getWriter();
 
         // Cuando se pulse botón Votar
@@ -72,6 +73,9 @@ public class Acb extends HttpServlet {
             } finally {
                 out.close();
             }
+        } else {
+            // Llamada a la página jsp que nos da las gracias
+            res.sendRedirect(res.encodeRedirectURL("TablaVotos.jsp"));
         }
 
     }
