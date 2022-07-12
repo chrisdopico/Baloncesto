@@ -1,8 +1,8 @@
 package servlets;
 
 import java.io.*;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
 import modelo.*;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.LogManager;
