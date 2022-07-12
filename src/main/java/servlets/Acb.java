@@ -2,12 +2,14 @@ package servlets;
 
 import java.io.*;
 import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import modelo.*;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
+@WebServlet("/Acb")
 public class Acb extends HttpServlet {
 
     private ModeloDatos bd;
