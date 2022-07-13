@@ -70,7 +70,7 @@ jobs:
 
   despliegue-heroku:
     runs-on: self-hosted
-    needs: despliegue-heroku-pre
+    #needs: despliegue-heroku-pre
     if: github.ref == 'refs/heads/main'
     steps:
       - name: deploy
