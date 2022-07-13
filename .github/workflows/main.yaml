@@ -58,25 +58,24 @@ jobs:
           mvn sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.qualitygate.wait=true -Dsonar.login=admin -Dsonar.password=admin1
         
 
-  despliegue-heroku-pre:
-    runs-on: self-hosted
-    needs: calidad-codigo
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2.3.3
-      - name: release
-        run: |
-          export HEROKU_API_KEY=${{secrets.HEROKU_API_KEY}}
-          mvn heroku:deploy-war -Dheroku.appName=baloncestorelease -DskipTests=true
-
-  #despliegue-heroku:
+  #despliegue-heroku-pre:
     #runs-on: self-hosted
-    #needs: despliegue-heroku-pre
+    #needs: calidad-codigo
     #if: github.ref == 'refs/heads/main'
     #steps:
-      #- name: deploy
+      #- name: release
         #run: |
+          #export HEROKU_API_KEY=${{secrets.HEROKU_API_KEY}}
+          #mvn heroku:deploy-war -Dheroku.appName=baloncestorelease -DskipTests=true
+
+  despliegue-heroku:
+    runs-on: self-hosted
+    needs: calidad-codigo
+    #needs: despliegue-heroku-pre
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: deploy
+        run: |
           #export HEROKU_API_KEY=${{secrets.HEROKU_API_KEY}}
           #mvn heroku:deploy-war -Dheroku.appName=baloncestogithub -DskipTests=true
 
